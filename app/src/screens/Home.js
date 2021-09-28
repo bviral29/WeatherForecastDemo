@@ -7,6 +7,8 @@ import Methods from '../utils/Methods';
 
 function Home(props) {
 
+    console.log('HOME :>>> ', props.weatherData);
+
     return (
         <React.Fragment>
             <View style={{flex: 1}}>

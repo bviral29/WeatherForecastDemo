@@ -10,12 +10,15 @@ import {callWeatherDataAPI} from '../actions/WeatherDataAction';
 export default function Splash(props) {
 
     const currentCity = 'Ahmedabad, GJ, IN';
+    let splashInterval;
     const dispatch = useDispatch();
     const getWeatherResponse = useSelector(state => state.WeatherForecastReducer);
     const {loading, error, weatherData} = getWeatherResponse;
 
-    if (weatherData !== {}) {
-        props.navigation.replace('Home');
+    if (Object.keys(weatherData).length !== 0) {
+        splashInterval = setTimeout(() => {
+            props.navigation.replace('Home');
+        }, 1000);
     }
 
     // useEffect(() => {
@@ -27,6 +30,8 @@ export default function Splash(props) {
 
     useEffect(() => {
         dispatch(callWeatherDataAPI(currentCity));
+
+        return () => clearTimeout(splashInterval);
     }, [dispatch]);
 
     return (

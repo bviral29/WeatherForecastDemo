@@ -20,7 +20,3 @@ export const callWeatherDataAPI = (cityName) => async dispatch => {
         });
     }
 };
-
-export const getWeatherData = () => {
-    return GET_WEATHER_DATA;
-};
