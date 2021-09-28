@@ -5,7 +5,7 @@ import Images from '../../res/Images';
 import Colors from '../../res/Colors';
 import {sizeFont, sizeWidth} from '../utils/Size';
 import Strings from '../../res/Strings';
-import {callWeatherDataAPI} from '../actions/WeatherDataAction';
+import {getWeatherData} from '../actions/WeatherDataAction';
 
 export default function Splash(props) {
 
@@ -18,18 +18,12 @@ export default function Splash(props) {
     if (Object.keys(weatherData).length !== 0) {
         splashInterval = setTimeout(() => {
             props.navigation.replace('Home');
-        }, 1000);
+        }, 500);
     }
 
-    // useEffect(() => {
-    //     const splashInterval = setTimeout(() => {
-    //         props.navigation.replace('Home');
-    //     }, 2000);
-    //     return () => clearTimeout(splashInterval);
-    // }, []);
-
     useEffect(() => {
-        dispatch(callWeatherDataAPI(currentCity));
+        dispatch(getWeatherData(currentCity));
+        //dispatch(setCurrentCity(currentCity));
 
         return () => clearTimeout(splashInterval);
     }, [dispatch]);
@@ -58,6 +52,6 @@ const styles = StyleSheet.create({
         height: '45%', width: '45%',
     },
     appNameStyle: {
-        color: Colors.BLACK, fontSize: sizeFont(5), alignSelf: 'center', marginBottom: sizeWidth(15),
+        color: Colors.BLACK, fontSize: sizeFont(3.5), alignSelf: 'center', marginBottom: sizeWidth(15),
     },
 });

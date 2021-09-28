@@ -1,8 +1,8 @@
-import {GET_WEATHER_DATA, WEATHER_DATA_ERROR} from './ActionTypes';
+import {CURRENT_CITY_NAME, GET_WEATHER_DATA, WEATHER_DATA_ERROR} from './ActionTypes';
 import {getWebServiceCall} from '../api/Webservice';
 import {ApiConst} from '../api/ApiConst';
 
-export const callWeatherDataAPI = (cityName) => async dispatch => {
+export const getWeatherData = (cityName) => async dispatch => {
     try {
         var bodyParams = {params: {appid: ApiConst.API_KEY, q: cityName}};
 
@@ -19,4 +19,11 @@ export const callWeatherDataAPI = (cityName) => async dispatch => {
             payload: error,
         });
     }
+};
+
+export const setCurrentCity = (currentCityName) => async dispatch => {
+    dispatch({
+        type: CURRENT_CITY_NAME,
+        payload: currentCityName,
+    });
 };

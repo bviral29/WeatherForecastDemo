@@ -1,8 +1,9 @@
-import {GET_WEATHER_DATA, WEATHER_DATA_ERROR} from '../actions/ActionTypes';
+import {CURRENT_CITY_NAME, GET_WEATHER_DATA, WEATHER_DATA_ERROR} from '../actions/ActionTypes';
 
 const initialState = {
     weatherData: {},
     loading: true,
+    currentCityName: '',
 };
 
 export default function (state = initialState, action) {
@@ -20,6 +21,11 @@ export default function (state = initialState, action) {
             return {
                 loading: false,
                 error: action.payload,
+            };
+
+        case CURRENT_CITY_NAME:
+            return {
+                currentCityName: action.payload,
             };
 
         default:

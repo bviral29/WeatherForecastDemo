@@ -11,10 +11,7 @@ const AppNavigator = createStackNavigator({
   },
   Home: {
     screen: Home, navigationOptions: {gestureEnabled: false},
-  },
-  // EventList: {
-  //   screen: EventList, navigationOptions: {gestureEnabled: false}
-  // },
+  }
 }, {
   initialRouteName: 'Splash',
   headerMode: 'none',
