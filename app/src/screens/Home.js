@@ -1,19 +1,11 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {StatusBar, StyleSheet, Text, View} from 'react-native';
 import Colors from '../../res/Colors';
 import {sizeFont, sizeWidth} from '../utils/Size';
-import {connect, useDispatch, useSelector} from 'react-redux';
+import {connect} from 'react-redux';
 import Methods from '../utils/Methods';
 
 function Home(props) {
-    const currentCity = 'Ahmedabad, GJ, IN';
-    const dispatch = useDispatch();
-    const getWeatherResponse = useSelector(state => state.WeatherForecastReducer);
-    const {loading, error, weatherData} = getWeatherResponse;
-
-    useEffect(() => {
-        //dispatch(getWeatherData(currentCity))
-    }, [dispatch]);
 
     return (
         <React.Fragment>
